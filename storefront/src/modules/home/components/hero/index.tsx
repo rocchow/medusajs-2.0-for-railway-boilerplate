@@ -1,32 +1,20 @@
-import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Heading, Text } from "@medusajs/ui"
 
 const Hero = () => {
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
-        <span>
+    <div className="w-full border-b border-ui-border-base bg-white">
+      <div className="content-container py-16 xsmall:py-20 small:py-24">
+        <div className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto">
           <Heading
             level="h1"
-            className="text-3xl leading-10 text-ui-fg-base font-normal"
+            className="text-4xl xsmall:text-5xl small:text-6xl leading-tight text-ui-fg-base font-bold"
           >
-            Well done! You have successfully deployed your Medusa 2.0 store on Railway!
+            Welcome to Evola!
           </Heading>
-          <Heading
-            level="h2"
-            className="text-3xl leading-10 text-ui-fg-subtle font-normal"
-          >
-            Need help customizing your store?
-          </Heading>
-        </span>
-        <a
-          href="https://funkyton.com/medusajs-2-0-is-finally-here/"
-          target="_blank"
-        >
-          <h1 style={{ textDecoration: "underline" }}>
-            Visit the tutorial
-          </h1>
-        </a>
+          <Text className="text-lg xsmall:text-xl text-ui-fg-subtle max-w-lg leading-relaxed">
+            买我Dylan货，包你冇搞错！
+          </Text>
+        </div>
       </div>
     </div>
   )

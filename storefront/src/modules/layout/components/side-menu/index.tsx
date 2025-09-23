@@ -11,7 +11,7 @@ import { HttpTypes } from "@medusajs/types"
 
 const SideMenuItems = {
   Home: "/",
-  Store: "/store",
+  Shop: "/store",
   Search: "/search",
   Account: "/account",
   Cart: "/cart",
@@ -29,9 +29,23 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
               <div className="relative flex h-full">
                 <Popover.Button
                   data-testid="nav-menu-button"
-                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
+                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base p-2"
                 >
-                  Menu
+                  {/* Hamburger Icon */}
+                  <div className="flex flex-col gap-1 w-6 h-6 justify-center">
+                    <span className={clx(
+                      "block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out",
+                      open ? "rotate-45 translate-y-1.5" : ""
+                    )}></span>
+                    <span className={clx(
+                      "block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out",
+                      open ? "opacity-0" : ""
+                    )}></span>
+                    <span className={clx(
+                      "block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out",
+                      open ? "-rotate-45 -translate-y-1.5" : ""
+                    )}></span>
+                  </div>
                 </Popover.Button>
               </div>
 

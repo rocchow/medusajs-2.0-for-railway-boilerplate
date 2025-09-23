@@ -22,12 +22,13 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
   className,
   "data-testid": dataTestid,
 }) => {
-  const initialImage = thumbnail || images?.[0]?.url
+  const primaryImage = thumbnail || images?.[0]?.url
+  const hoverImage = images?.[1]?.url // Second image for hover effect
 
   return (
     <Container
       className={clx(
-        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle shadow-elevation-card-rest rounded-large group-hover:shadow-elevation-card-hover transition-shadow ease-in-out duration-150",
+        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle shadow-elevation-card-rest rounded-large group-hover:shadow-elevation-card-hover transition-all ease-in-out duration-300",
         className,
         {
           "aspect-[11/14]": isFeatured,
@@ -41,7 +42,20 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
       )}
       data-testid={dataTestid}
     >
-      <ImageOrPlaceholder image={initialImage} size={size} />
+      {/* Primary Image */}
+      <div className={clx(
+        "relative w-full h-full transition-opacity duration-300 ease-in-out",
+        hoverImage && hoverImage !== primaryImage ? "group-hover:opacity-0" : ""
+      )}>
+        <ImageOrPlaceholder image={primaryImage} size={size} />
+      </div>
+      
+      {/* Hover Image (if available and different from primary) */}
+      {hoverImage && hoverImage !== primaryImage && (
+        <div className="absolute inset-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+          <ImageOrPlaceholder image={hoverImage} size={size} />
+        </div>
+      )}
     </Container>
   )
 }
