@@ -9,10 +9,11 @@ const Hero = () => {
             level="h1"
             className="text-4xl xsmall:text-5xl small:text-6xl leading-tight text-ui-fg-base font-bold"
           >
-            Welcome to Evola!
+            Welcome to Evola/Tely!
           </Heading>
           <Text className="text-lg xsmall:text-xl text-ui-fg-subtle max-w-lg leading-relaxed">
-            买我Dylan货，包你冇搞错！
+            买我Dylan货，包你冇搞错！<br />
+            拼了Tely图，肯定有前途！
           </Text>
         </div>
       </div>
