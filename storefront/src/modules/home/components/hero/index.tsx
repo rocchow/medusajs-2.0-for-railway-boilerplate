@@ -12,8 +12,8 @@ const Hero = () => {
             Welcome to Evola/Tely!
           </Heading>
           <Text className="text-lg xsmall:text-xl text-ui-fg-subtle max-w-lg leading-relaxed">
-            买我Dylan货，包你冇搞错！<br />
-            拼了Tely图，肯定有前途！
+            买咗Dylan货，包你冇搞错！<br />
+            拼咗Tely图，肯定有前途！
           </Text>
         </div>
       </div>
