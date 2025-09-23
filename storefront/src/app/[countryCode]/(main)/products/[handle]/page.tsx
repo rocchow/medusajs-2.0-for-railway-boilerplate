@@ -10,36 +10,48 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  const countryCodes = await listRegions().then(
-    (regions) =>
-      regions
-        ?.map((r) => r.countries?.map((c) => c.iso_2))
-        .flat()
-        .filter(Boolean) as string[]
-  )
-
-  if (!countryCodes) {
-    return null
-  }
-
-  const products = await Promise.all(
-    countryCodes.map((countryCode) => {
-      return getProductsList({ countryCode })
-    })
-  ).then((responses) =>
-    responses.map(({ response }) => response.products).flat()
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode) =>
-      products.map((product) => ({
-        countryCode,
-        handle: product.handle,
-      }))
+  try {
+    const countryCodes = await listRegions().then(
+      (regions) =>
+        regions
+          ?.map((r) => r.countries?.map((c) => c.iso_2))
+          .flat()
+          .filter(Boolean) as string[]
     )
-    .flat()
 
-  return staticParams
+    if (!countryCodes || countryCodes.length === 0) {
+      return []
+    }
+
+    const products = await Promise.all(
+      countryCodes.map(async (countryCode) => {
+        try {
+          return await getProductsList({ countryCode })
+        } catch (error) {
+          console.error(`Error fetching products for ${countryCode}:`, error)
+          return { response: { products: [] } }
+        }
+      })
+    ).then((responses) =>
+      responses.map(({ response }) => response.products).flat()
+    )
+
+    const staticParams = countryCodes
+      ?.map((countryCode) =>
+        products
+          .filter((product) => product.handle) // Ensure handle exists
+          .map((product) => ({
+            countryCode,
+            handle: product.handle,
+          }))
+      )
+      .flat()
+
+    return staticParams || []
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error)
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
