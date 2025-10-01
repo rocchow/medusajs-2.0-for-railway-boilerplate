@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <>
       {/* Main Hero Section - Reduced to Half Screen */}
-      <div className="w-full bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 relative overflow-hidden" style={{ height: '50vh', minHeight: '400px' }}>
+      <div className="w-full bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -13,38 +13,38 @@ const Hero = () => {
           }} />
         </div>
 
-        <div className="content-container h-full relative flex items-center">
+        <div className="content-container py-12 xsmall:py-16 small:py-20 medium:min-h-[50vh] relative flex items-center">
           <div className="flex flex-col items-center text-center gap-6 max-w-4xl mx-auto w-full">
             {/* Main Heading */}
             <div className="space-y-3">
               <Heading
                 level="h1"
-                className="text-4xl xsmall:text-5xl small:text-6xl leading-tight text-slate-900 font-bold tracking-tight"
+                className="text-3xl xsmall:text-4xl small:text-5xl medium:text-6xl leading-tight text-slate-900 font-bold tracking-tight"
               >
                 Enhance Your
                 <span className="block bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 bg-clip-text text-transparent">Natural Beauty</span>
               </Heading>
-              <Text className="text-lg xsmall:text-xl text-slate-600 max-w-2xl leading-relaxed font-light">
+              <Text className="text-base xsmall:text-lg small:text-xl text-slate-600 max-w-2xl leading-relaxed font-light px-4">
                 Discover luxurious beauty products crafted with care. 
                 From radiant makeup to nourishing skincare - embrace your confidence every day.
               </Text>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col xsmall:flex-row gap-4 mt-4">
-              <Link href="/store">
+            <div className="flex flex-col xsmall:flex-row gap-3 mt-2 w-full px-4 xsmall:w-auto xsmall:px-0">
+              <Link href="/store" className="w-full xsmall:w-auto">
                 <Button 
-                  size="xlarge" 
-                  className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  size="large" 
+                  className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-6 xsmall:px-8 py-3 xsmall:py-4 text-base xsmall:text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   Shop Now
                 </Button>
               </Link>
-              <Link href="/store">
+              <Link href="/store" className="w-full xsmall:w-auto">
                 <Button 
                   variant="secondary" 
-                  size="xlarge"
-                  className="border-2 border-pink-300 hover:border-pink-400 text-slate-700 hover:text-slate-900 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                  size="large"
+                  className="w-full border-2 border-pink-300 hover:border-pink-400 text-slate-700 hover:text-slate-900 px-6 xsmall:px-8 py-3 xsmall:py-4 text-base xsmall:text-lg font-semibold rounded-full transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 >
                   Browse Bestsellers
                 </Button>
@@ -52,7 +52,7 @@ const Hero = () => {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 mt-6 text-slate-500">
+            <div className="flex flex-wrap justify-center items-center gap-4 xsmall:gap-6 mt-4 xsmall:mt-6 text-slate-500 px-4">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
