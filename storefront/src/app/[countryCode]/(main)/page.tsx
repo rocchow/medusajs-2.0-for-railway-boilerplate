@@ -3,13 +3,17 @@ import { Metadata } from "next"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import AllProducts from "@modules/home/components/all-products"
+import FeaturedCategories from "@modules/home/components/featured-categories"
+import Testimonials from "@modules/home/components/testimonials"
+import Features from "@modules/home/components/features"
+import Newsletter from "@modules/home/components/newsletter"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "Evola - Premium Products Store",
+  title: "Luxurious Beauty Products - Premium Makeup & Skincare",
   description:
-    "Discover our delightful selection of premium products. We take pride in offering quality items that cater to all your needs.",
+    "Discover our curated selection of premium beauty products. From radiant makeup to nourishing skincare - enhance your natural beauty with authentic, cruelty-free cosmetics. Free shipping $50+",
 }
 
 export default async function Home({
@@ -26,9 +30,13 @@ export default async function Home({
 
   return (
     <>
+      {/* Hero Section with promotional banner */}
       <Hero />
       
-      {/* All Products Section - Zeki Style */}
+      {/* Featured Categories */}
+      <FeaturedCategories />
+      
+      {/* All Products Section */}
       <AllProducts region={region} countryCode={countryCode} />
       
       {/* Featured Collections (if available) */}
@@ -39,6 +47,15 @@ export default async function Home({
           </ul>
         </div>
       )}
+
+      {/* Customer Testimonials */}
+      <Testimonials />
+
+      {/* Features & Benefits */}
+      <Features />
+
+      {/* Newsletter Signup */}
+      <Newsletter />
     </>
   )
 }

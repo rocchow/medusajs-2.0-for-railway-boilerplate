@@ -49,24 +49,45 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                 </Popover.Button>
               </div>
 
+              {/* Backdrop overlay */}
               <Transition
                 show={open}
                 as={Fragment}
-                enter="transition ease-out duration-150"
+                enter="transition-opacity ease-out duration-300"
                 enterFrom="opacity-0"
-                enterTo="opacity-100 backdrop-blur-2xl"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 backdrop-blur-2xl"
+                enterTo="opacity-100"
+                leave="transition-opacity ease-in duration-200"
+                leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Popover.Panel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl">
+                <div 
+                  className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+                  onClick={close}
+                />
+              </Transition>
+
+                  <Transition
+                    show={open}
+                    as={Fragment}
+                    enter="transition ease-out duration-300"
+                    enterFrom="opacity-0 -translate-x-full"
+                    enterTo="opacity-100 translate-x-0"
+                    leave="transition ease-in duration-200"
+                    leaveFrom="opacity-100 translate-x-0"
+                    leaveTo="opacity-0 -translate-x-full"
+                  >
+                    <Popover.Panel className="flex flex-col fixed w-[50vw] left-0 top-0 h-screen z-50 text-sm shadow-2xl">
                   <div
                     data-testid="nav-menu-popup"
-                    className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6"
+                    className="flex flex-col h-full bg-gradient-to-br from-pink-50 via-white to-rose-50 justify-between p-6"
                   >
                     <div className="flex justify-end" id="xmark">
-                      <button data-testid="close-menu-button" onClick={close}>
-                        <XMark />
+                      <button 
+                        data-testid="close-menu-button" 
+                        onClick={close}
+                        className="p-2 hover:bg-pink-100 rounded-full transition-colors duration-200"
+                      >
+                        <XMark className="text-slate-700" />
                       </button>
                     </div>
                     <ul className="flex flex-col gap-6 items-start justify-start">
@@ -75,7 +96,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                           <li key={name}>
                             <LocalizedClientLink
                               href={href}
-                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                              className="text-2xl leading-10 text-slate-700 font-medium hover:text-pink-600 transition-colors duration-200"
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >
@@ -87,7 +108,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                     </ul>
                     <div className="flex flex-col gap-y-6">
                       <div
-                        className="flex justify-between"
+                        className="flex justify-between items-center"
                         onMouseEnter={toggleState.open}
                         onMouseLeave={toggleState.close}
                       >
@@ -99,14 +120,13 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         )}
                         <ArrowRightMini
                           className={clx(
-                            "transition-transform duration-150",
+                            "transition-transform duration-150 text-slate-700",
                             toggleState.state ? "-rotate-90" : ""
                           )}
                         />
                       </div>
-                      <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Medusa Store. All rights
-                        reserved.
+                      <Text className="flex justify-between txt-compact-small text-slate-600">
+                        © {new Date().getFullYear()} Beauty Store. All rights reserved.
                       </Text>
                     </div>
                   </div>
